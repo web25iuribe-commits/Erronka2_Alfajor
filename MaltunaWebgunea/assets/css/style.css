@@ -13,16 +13,16 @@
 --------------------------------------------------------------*/
 body {
   font-family: "Open Sans", sans-serif;
-  color: #444444;
+  color: #1100ff;
 }
 
 a {
-  color: #ffc451;
+  color: #1a009d;
   text-decoration: none;
 }
 
 a:hover {
-  color: #ffd584;
+  color: #0011ff;
   text-decoration: none;
 }
 
@@ -45,7 +45,7 @@ h6 {
   right: 15px;
   bottom: 15px;
   z-index: 996;
-  background: #ffc451;
+  background: #1a009d;
   width: 40px;
   height: 40px;
   border-radius: 4px;
@@ -63,7 +63,7 @@ h6 {
 }
 
 .back-to-top:hover i {
-  color: #ffc451;
+  color: #1a009d;
 }
 
 .back-to-top.active {
@@ -90,7 +90,7 @@ h6 {
   position: fixed;
   top: calc(50% - 0px);
   left: calc(50% - 30px);
-  border: 6px solid #ffc451;
+  border: 6px solid #1a009d;
   border-top-color: #151515;
   border-bottom-color: #151515;
   border-radius: 50%;
@@ -147,7 +147,7 @@ h6 {
 }
 
 #header .logo a span {
-  color: #ffc451;
+  color: #1a009d;
 }
 
 #header .logo img {
@@ -165,11 +165,11 @@ h6 {
   transition: 0.3s;
   font-size: 14px;
   display: inline-block;
-  border: 2px solid #ffc451;
+  border: 2px solid #1a009d;
 }
 
 .get-started-btn:hover {
-  background: #ffbb38;
+  background: #1a009d;
   color: #343a40;
 }
 
@@ -226,7 +226,7 @@ h6 {
 .navbar .active,
 .navbar .active:focus,
 .navbar li:hover>a {
-  color: #ffc451;
+  color: #1a009d;
 }
 
 .navbar .dropdown ul {
@@ -263,7 +263,7 @@ h6 {
 .navbar .dropdown ul a:hover,
 .navbar .dropdown ul .active:hover,
 .navbar .dropdown ul li:hover>a {
-  background-color: #ffc451;
+  background-color: #1a009d;
 }
 
 .navbar .dropdown:hover>ul {
@@ -359,7 +359,7 @@ h6 {
 .navbar-mobile .active,
 .navbar-mobile li:hover>a {
   color: #151515;
-  background-color: #ffc451;
+  background-color: #1a009d;
 }
 
 .navbar-mobile .getstarted,
@@ -395,7 +395,7 @@ h6 {
 .navbar-mobile .dropdown ul a:hover,
 .navbar-mobile .dropdown ul .active:hover,
 .navbar-mobile .dropdown ul li:hover>a {
-  background-color: #ffc451;
+  background-color: #1a009d;
 }
 
 .navbar-mobile .dropdown>.dropdown-active {
@@ -439,7 +439,7 @@ h6 {
 }
 
 #hero h1 span {
-  color: #ffc451;
+  color: #1a009d;
 }
 
 #hero h2 {
