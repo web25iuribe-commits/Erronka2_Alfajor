@@ -18,6 +18,8 @@ public class Piezak {
                 System.out.println("Izena: " + datuak[1]);
                 System.out.println("Deskribapena: " + datuak[2]);
                 System.out.println("Pisua(gr): " + datuak[3]);
+                System.out.println("Prezioa: " + datuak[4]);
+                System.out.println("Stock: " + datuak[5]);
                 System.out.println("-----------");
             }
             br.close();
