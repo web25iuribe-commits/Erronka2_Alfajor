@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+         <children>
+            <MenuButton layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="520.0" text="Piezak">
+               <items>
+                  <MenuItem onAction="#menuaMenu" mnemonicParsing="false" text="Menua" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem onAction="#erabiltzaileakMenu" mnemonicParsing="false" text="Erabiltzaileak" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem onAction="#makinakMenu" mnemonicParsing="false" text="Makinak" />
+               </items>
+            </MenuButton>
+            <ImageView fitHeight="47.0" fitWidth="125.0" layoutX="543.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Argazkiak/images.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="165.0" layoutY="185.0" prefHeight="18.0" prefWidth="310.0" text="Piezaren informazioa aldatu">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="94.0" layoutY="259.0" prefHeight="18.0" prefWidth="96.0" text="Deskribapena">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="deskribapenaField" layoutX="206.0" layoutY="257.0" prefHeight="26.0" prefWidth="300.0" />
+            <Label layoutX="94.0" layoutY="225.0" prefHeight="22.0" prefWidth="48.0" text="Izena">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="izenaField" layoutX="206.0" layoutY="297.0" prefHeight="27.0" prefWidth="115.0" />
+            <Label layoutX="94.0" layoutY="300.0" prefHeight="18.0" prefWidth="96.0" text="Pisua(gr)">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="pisuaField" layoutX="206.0" layoutY="336.0" prefHeight="26.0" prefWidth="115.0" />
+            <Label layoutX="94.0" layoutY="338.0" prefHeight="22.0" prefWidth="115.0" text="Prezioa">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="prezioaField" layoutX="390.0" layoutY="297.0" prefHeight="27.0" prefWidth="115.0" />
+            <TableView layoutX="64.0" layoutY="54.0" prefHeight="126.0" prefWidth="471.0">
+               <columns>
+                  <TableColumn prefWidth="72.79998779296875" text="ID_Pieza" />
+                  <TableColumn prefWidth="79.20001220703125" text="Izena" />
+                  <TableColumn prefWidth="106.4000244140625" text="Deskribapena" />
+                  <TableColumn prefWidth="73.5999755859375" text="Pisua(gr)" />
+                  <TableColumn prefWidth="64.0" text="Prezioa" />
+                  <TableColumn prefWidth="72.0" text="Stock" />
+               </columns>
+            </TableView>
+            <Label layoutX="335.0" layoutY="300.0" prefHeight="18.0" prefWidth="96.0" text="Stock">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="stockField" layoutX="206.0" layoutY="223.0" prefHeight="27.0" prefWidth="300.0" />
+            <Button onAction="#piezaAldatu" layoutX="354.0" layoutY="347.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="ALDATU" />
+            <Button onAction="#garbitu" layoutX="443.0" layoutY="347.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="64.0" text="GARBITU" />
+            <Button onAction="#piezaBueltatu" layoutX="531.0" layoutY="347.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="86.0" text="BUELTATU" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

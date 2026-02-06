@@ -4,24 +4,27 @@ import java.io.IOException;
 
 public class Piezak_eta_pieza_motak {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
+        
+        String fitxategia = "csv/piezak_eta_pieza_motak.csv"; 
+        String lerroa;
 
-		String fitxategia = "csv_irakurketa/csv/piezak_eta_pieza_motak.csv";
+        try (BufferedReader br = new BufferedReader(new FileReader(fitxategia))) {
 
-		try (BufferedReader br = new BufferedReader(new FileReader(fitxategia))) {
-			String lerroa;
+			System.out.println("--- PIEZA ETA PIEZA MOTAK LOTURA ---");
 
-			while ((lerroa = br.readLine()) != null) {
-				String[] datuak = lerroa.split(",");
 
-				System.out.println("Id pieza: " + datuak[0]);
-				System.out.println("Id pieza mota: " + datuak[1]);
-				System.out.println("-----------");
-			}
-			br.close();
+            while ((lerroa = br.readLine()) != null) {
+                // Dividimos la línea por las comas
+                String[] datuak = lerroa.split(",");
 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+                // Imprimimos simple: ID - NOMBRE - PRECIO - STOCK
+                // Usamos " | " para separar visualmente sin complicaciones
+                System.out.println(datuak[0] + " | " + datuak[1]);
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error leyendo el archivo: " + e.getMessage());
+        }
+    }
 }
