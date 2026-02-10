@@ -1,24 +1,8 @@
 {
-    "liveServer.settings.port": 5501,
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "type": "java",
-            "name": "Launch App",
-            "request": "launch",
-            "mainClass": "app.App",
-            "projectName": "Erronka2_Alfajor",
-            "vmArgs": "--module-path \"C:/Program Files/Java/javafx-sdk-21/lib\" --add-modules javafx.controls,javafx.fxml"
-        }
-    ],
-    "java.project.sourcePaths": [
-        "programa/src/main/java/app",
-        "csv_irakurketa/src",
-        "Irakurri/src",
-        "hasierako_inportazioa/src"
-    ],
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "c:\\Users\\web25aprieto\\Downloads\\mysql-connector-j-9.6.0\\mysql-connector-j-9.6.0\\mysql-connector-j-9.6.0.jar"
-    ]
+ "java.project.referencedLibraries": [
+    "lib/**/*.jar",
+    "Irakurri/lib/mysql-connector-java-9..0.jar"
+ ],
+ "java.debug.settings.onBuildFailureProceed": true,
+ "java.configuration.updateBuildConfiguration": "interactive"
 }

@@ -49,7 +49,6 @@ public class piezaGehitu {
         int prezioa = Integer.parseInt(prezioaPieza.getText());
         int stock = Integer.parseInt(stockPieza.getText());
         String pisua = pisuPieza.getText();
-        String idPiezaMota = (id_pieza_Mota != null) ? id_pieza_Mota.getText() : "0"; // si es null, usa 0
 
         System.out.println("ID: " + id);
         System.out.println("Izena: " + izena);
@@ -57,10 +56,9 @@ public class piezaGehitu {
         System.out.println("Prezioa: " + prezioa);
         System.out.println("Stock: " + stock);
         System.out.println("Pisua: " + pisua);
-        System.out.println("ID Pieza Mota: " + idPiezaMota);
 
         // DATU GUZTIAK BETE BEHAR DIRA.
-        if ( id.isEmpty() || izena.isEmpty() || deskribapena.isEmpty() || prezioa <= 0 || stock <= 0 || idPiezaMota.isEmpty() ) {
+        if ( id.isEmpty() || izena.isEmpty() || deskribapena.isEmpty() || prezioa <= 0 || stock <= 0 || pisua.isEmpty() ) {
             System.out.println("ERROREA: Datu guztiak bete behar dira.");
             return;
         }
@@ -72,10 +70,6 @@ public class piezaGehitu {
         }
         if (id.length() > 4) {
             System.out.println("ERROREA: ID-ak 4 karaktere baino gehiago ditu.");
-            return;
-        }
-          if (idPiezaMota.length() > 4) {
-            System.out.println("ERROREA: ID Pieza Motak 4 karaktere baino gehiago ditu.");
             return;
         }
         if (deskribapena.length() > 150) {
@@ -90,13 +84,6 @@ public class piezaGehitu {
             System.out.println("ERROREA: Stock-ak 7 karaktere baino gehiago ditu.");
             return;
         }
-
-        // PIEZAKO ID-A EZIN DELAKO BERDINA IZAN.
-        /* boolean exists = false; 
-        if(exists){
-            System.out.println("ERROREA: ID hori pieza bat du");
-            return;
-        }*/
 
         // PREZIOA, STOCK-A ETA PISUA ZENBAKIAK IZAN BEHAR DIRA ETA EZIN DIRA NEGATIBOAK IZAN.
         try {
@@ -132,17 +119,15 @@ public class piezaGehitu {
         }
 
 
-         DBKonexioa konex = new DBKonexioa();
+        DBKonexioa konex = new DBKonexioa();
         Connection cn = null;
 
          try {
             cn = konex.konektatu();
- System.out.println("Komunikazio kanala ireki aurretika.");
             if (cn != null && !cn.isClosed()) {
-                System.out.println("Komunikazio kanala irekita dago.");
 
                 // INSERT en la tabla PIEZA
-                String sql = "INSERT INTO PIEZA (Id_pieza, Izena, Deskribapena, Pisua, Prezioa, Stock, Id_pieza_Mota) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                String sql = "INSERT INTO PIEZA (Id_pieza, Izena, Deskribapena, Pisua, Prezioa, Stock) VALUES (?, ?, ?, ?, ?, ?)";
                 PreparedStatement ps = cn.prepareStatement(sql);
                 ps.setString(1, id);
                 ps.setString(2, izena);
@@ -150,7 +135,6 @@ public class piezaGehitu {
                 ps.setInt(4, Integer.parseInt(pisua));
                 ps.setDouble(5, Double.parseDouble(String.valueOf(prezioa)));
                 ps.setInt(6, Integer.parseInt(String.valueOf(stock)));
-                ps.setString(7, idPiezaMota);
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected > 0) {
                     System.out.println("Pieza gehitu da datu-basean!");
@@ -170,7 +154,7 @@ public class piezaGehitu {
         
     }
       @FXML
-    private void piezaBueltatu() throws IOException {
+    private void Bueltatu() throws IOException {
         App.setRoot("Pieza_printzipala");
     }
 }

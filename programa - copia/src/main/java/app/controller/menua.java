@@ -11,7 +11,7 @@ public class menua {
     }
     @FXML
     private void erabiltzaileakMenu() throws Exception {
-        App.setRoot("Erabiltzaileak_printzipala");
+        App.setRoot("Erabiltzailea_printzipala");
     }
 
     @FXML

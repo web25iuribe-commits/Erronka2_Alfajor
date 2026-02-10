@@ -21,7 +21,9 @@ public class DBKonexioa {
     public Connection konektatu() throws SQLException {
 
     	// throws erabiliz, salbuespena, metodoa deitu duen programara hedatzen da.
-    	// DriverManager.getConnection() metodoak bere barruan SQLException jaurtitzen du (throw) salbuespena gertatzen bada.
+    	
+        // DriverManager.getConnection() metodoak bere barruan SQLException jaurtitzen du (throw) salbuespena gertatzen bada.
+        System.out.println("konektatu funtzioa");
         return  DriverManager.getConnection(URL, USER, PASS);
     }
 }

@@ -14,12 +14,16 @@ public class piezaPrintzipala {
     }
     @FXML
     private void erabiltzaileakMenu() throws Exception {
-        App.setRoot("Erabiltzaileak_printzipala");
+        App.setRoot("Erabiltzailea_printzipala");
     }
 
     @FXML
     private void menuaMenu() throws Exception {    
         App.setRoot("menua (1)");
+    }
+    @FXML
+    private void piezakMenu() throws Exception {
+        App.setRoot("Pieza_printzipala");
     }
 
         @FXML

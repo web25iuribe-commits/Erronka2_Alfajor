@@ -72,14 +72,8 @@
                </font>
             </Label>
             <TextField fx:id="stockPieza" layoutX="161.0" layoutY="296.0" prefHeight="27.0" prefWidth="327.0" />
-            <Label layoutX="47.0" layoutY="337.0" prefHeight="18.0" prefWidth="115.0" text="ID Pieza Mota">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <TextField fx:id="idPiezaMota" layoutX="162.0" layoutY="334.0" prefHeight="27.0" prefWidth="327.0" />
-            <Button onAction="#piezaGehitu" layoutX="285.0" layoutY="370.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="78.0" text="GEHITU" />
-            <Button onAction="#piezaBueltatu" layoutX="544.0" layoutY="370.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="86.0" text="BUELTATU" />
+            <Button onAction="#piezaGehitu" layoutX="285.0" layoutY="349.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="78.0" text="GEHITU" />
+            <Button onAction="#Bueltatu" layoutX="544.0" layoutY="349.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="86.0" text="BUELTATU" />
          </children>
       </AnchorPane>
    </children>

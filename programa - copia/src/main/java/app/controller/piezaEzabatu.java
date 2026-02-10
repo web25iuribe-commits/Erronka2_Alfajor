@@ -20,11 +20,11 @@ public class piezaEzabatu {
         App.setRoot("Erabiltzaileak_printzipala");
     }
 
-   /* @FXML
+    @FXML
     private void piezakMenu() throws Exception {    
         App.setRoot("Pieza_printzipala");
     }
-    */
+ 
     @FXML
     private void menuaMenu() throws Exception {    
         App.setRoot("menua (1)");
@@ -60,7 +60,11 @@ public class piezaEzabatu {
 
             // konexioa existitzen dela eta irekita dagoela konprobatzen du
             if (cn != null && !cn.isClosed()) {
-                System.out.println("Komunikazio kanala irekita dago.");
+                String sql = "DELETE FROM PIEZA WHERE Id_pieza = ?";
+                java.sql.PreparedStatement ps = cn.prepareStatement(sql);
+                ps.setString(1, id);
+                ps.executeUpdate();
+                ps.close();
 
                 // Konexioa itxi egiten da
                 cn.close();
@@ -76,9 +80,8 @@ public class piezaEzabatu {
         System.out.println("Pieza ezabatu da!");
         App.setRoot("Pieza_printzipala");
     }
-
     @FXML
-    private void piezaBueltatu() throws IOException {
+    private void Bueltatu() throws IOException {
         App.setRoot("Pieza_printzipala");
     }
 
