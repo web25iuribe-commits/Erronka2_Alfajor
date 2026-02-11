@@ -7,7 +7,7 @@ public class menua {
 
     @FXML
     private void makinakMenu() throws Exception {
-        App.setRoot("Makinak_printzipala");
+        App.setRoot("Makina_printzipala");
     }
     @FXML
     private void erabiltzaileakMenu() throws Exception {

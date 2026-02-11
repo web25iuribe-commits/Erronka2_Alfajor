@@ -12,15 +12,15 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.piezaEzabatu">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.erabiltzaileEzabatu"   >
    <children>
       <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
-            <MenuButton layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="520.0" text="ALFAJOR - PIEZA EZABATU">
+            <MenuButton layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="520.0" text="ALFAJOR - ERABILTZAILEA EZABATU">
                <items>
                   <MenuItem onAction="#makinakMenu" mnemonicParsing="false" text="Makinak" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem onAction="#erabiltzaileakMenu" mnemonicParsing="false" text="Erabiltzaileak" />
+                  <MenuItem onAction="#piezakMenu" mnemonicParsing="false" text="Piezak" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem onAction="#menuaMenu" mnemonicParsing="false" text="Menua" />
                </items>
@@ -30,19 +30,18 @@
                   <Image url="@Argazkiak/images.png" />
                </image>
             </ImageView>
-            <Label layoutX="243.0" layoutY="138.0" prefHeight="30.0" prefWidth="154.0" text="Pieza ezabatu">
+            <Label alignment="CENTER" layoutY="138.0" prefHeight="30.0" prefWidth="640.0" text="Erabiltzailea ezabatu">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="122.0" layoutY="220.0" prefHeight="18.0" prefWidth="96.0" text="ID_Pieza">
+            <Label layoutX="91.0" layoutY="220.0" prefHeight="22.0" prefWidth="127.0" text="ID_Erabiltzailea">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="idPiezaEzabatu" layoutX="212.0" layoutY="217.0" prefHeight="27.0" prefWidth="213.0" />
-            <Button onAction="#piezaEzabatu" layoutX="271.0" layoutY="290.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="96.0" text="EZABATU" />
-            <Button onAction="#Bueltatu" layoutX="534.0" layoutY="351.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="86.0" text="BUELTATU" />
+            <TextField fx:id="id_erabiltzailea" layoutX="212.0" layoutY="217.0" prefHeight="27.0" prefWidth="213.0" />
+            <Button onAction="#erabiltzaileEzabatu" layoutX="271.0" layoutY="290.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="96.0" text="EZABATU" />
          </children>
       </AnchorPane>
    </children>

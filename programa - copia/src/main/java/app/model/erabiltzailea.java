@@ -1,28 +1,28 @@
 package app.model;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 public class erabiltzailea {
     private String id_erabiltzailea;
     private String izena;   
     private String abizena1;
-    private Date jaiotze_data;
-    private String email;
-    private Date alta_data;
-    private String Helbidea;
     private String NAN;
+    private String Helbidea;
     private int postaKodea;
+    private String email;
+    private LocalDate jaiotze_data;
+    private LocalDate alta_data;
 
-    public erabiltzailea(String id_erabiltzailea, String izena, String abizena1, Date jaiotze_data, String email, Date alta_data, String helbidea, String NAN, int postaKodea) {
+    public erabiltzailea(String id_erabiltzailea, String izena, String abizena1, String NAN, String Helbidea, int postaKodea, String email, LocalDate jaiotze_data, LocalDate alta_data) {
         this.id_erabiltzailea = id_erabiltzailea;
         this.izena = izena;
         this.abizena1 = abizena1;
-        this.jaiotze_data = jaiotze_data;
-        this.email = email;
-        this.alta_data = alta_data;
-        this.Helbidea = helbidea;
         this.NAN = NAN;
+        this.Helbidea = Helbidea;
         this.postaKodea = postaKodea;
+        this.email = email;
+        this.jaiotze_data = jaiotze_data;
+        this.alta_data = alta_data;
     }
 
     public String getId_erabiltzailea() {
@@ -49,11 +49,11 @@ public class erabiltzailea {
         this.abizena1 = abizena1;
     }
 
-    public Date getJaiotze_data() {
+    public LocalDate getJaiotze_data() {
         return jaiotze_data;
     }
 
-    public void setJaiotze_data(Date jaiotze_data) {
+    public void setJaiotze_data(LocalDate jaiotze_data) {
         this.jaiotze_data = jaiotze_data;
     }
 
@@ -65,11 +65,11 @@ public class erabiltzailea {
         this.email = email;
     }
 
-    public Date getAlta_data() {
+    public LocalDate getAlta_data() {
         return alta_data;
     }
 
-    public void setAlta_data(Date alta_data) {
+    public void setAlta_data(LocalDate alta_data) {
         this.alta_data = alta_data;
     }
 

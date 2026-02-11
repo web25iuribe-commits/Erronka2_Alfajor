@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import app.App;
-import app.DBKonexioa;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
@@ -14,11 +13,11 @@ public class piezaAldatu {
 
         @FXML
     private void makinakMenu() throws Exception {
-        App.setRoot("Makinak_printzipala");
+        App.setRoot("Makina_printzipala");
     }
         @FXML
     private void erabiltzaileakMenu() throws Exception {
-        App.setRoot("Erabiltzaileak_printzipala");
+        App.setRoot("Erabiltzailea_printzipala");
     }
 
         @FXML
@@ -31,22 +30,22 @@ public class piezaAldatu {
         App.setRoot("menua (1)");
     }
 
-    @FXML private TextField idPieza;
-    @FXML private TextField izenaPieza;
-    @FXML private TextField deskribapenaPieza;
-    @FXML private TextField prezioaPieza;
-    @FXML private TextField stockPieza;
-    @FXML private TextField pisuaPieza;
+    @FXML private TextField id_pieza;
+    @FXML private TextField Izena;
+    @FXML private TextField Deskribapena;
+    @FXML private TextField Pisua;
+    @FXML private TextField Prezioa;
+    @FXML private TextField Stock;
 
         @FXML
-    private void piezaAldatu() throws IOException {
+    private void piezaAldatuBotoia() throws IOException {
 
-        String id = idPieza.getText(); 
-        String izena = izenaPieza.getText(); 
-        String deskribapena = deskribapenaPieza.getText(); 
-        int prezioa = Integer.parseInt(prezioaPieza.getText()); 
-        int stock = Integer.parseInt(stockPieza.getText()); 
-        String pisua = pisuaPieza.getText();
+        String id = id_pieza.getText(); 
+        String izena = Izena.getText(); 
+        String deskribapena = Deskribapena.getText(); 
+        int prezioa = Integer.parseInt(Prezioa.getText()); 
+        int stock = Integer.parseInt(Stock.getText()); 
+        String pisua = Pisua.getText();
 
         System.out.println("ID: " + id);
         System.out.println("Izena: " + izena);
@@ -74,9 +73,10 @@ public class piezaAldatu {
 
                 String sql = "UPDATE PIEZA SET Izena=?, Deskribapena=?, Pisua=?, Prezioa=?, Stock=? WHERE Id_pieza=?";
                 PreparedStatement ps = cn.prepareStatement(sql);
+               // ps.setString(1, id);
                 ps.setString(1, izena);
                 ps.setString(2, deskribapena);
-                ps.setInt(3, Integer.parseInt(pisua));
+                ps.setString(3, pisua);
                 ps.setInt(4, prezioa);
                 ps.setInt(5, stock);
                 ps.setString(6, id);

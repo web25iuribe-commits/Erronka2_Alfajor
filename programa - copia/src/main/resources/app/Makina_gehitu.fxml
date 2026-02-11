@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.makinaGehitu">
+   <children>
+      <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+         <children>
+            <MenuButton layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="520.0" text="ALFAJOR - MAKINA GEHITU">
+               <items>
+                  <MenuItem onAction="#menuaMenu" text="Menua" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem onAction="#erabiltzaileakMenu" mnemonicParsing="false" text="Erabiltzaileak" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem onAction="#piezakMenu" mnemonicParsing="false" text="Piezak" />
+               </items>
+            </MenuButton>
+            <ImageView fitHeight="47.0" fitWidth="125.0" layoutX="543.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Argazkiak/images.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="243.0" layoutY="83.0" prefHeight="30.0" prefWidth="154.0" text="Makina Gehitu">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="37.0" layoutY="149.0" prefHeight="18.0" prefWidth="115.0" text="ID_Makina">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="Id_makina" layoutX="152.0" layoutY="146.0" prefHeight="27.0" prefWidth="327.0" />
+            
+            <Label layoutX="37.0" layoutY="188.0" prefHeight="22.0" prefWidth="96.0" text="Izena">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="Izena" layoutX="152.0" layoutY="186.0" prefHeight="27.0" prefWidth="327.0" />
+            
+            <Label layoutX="37.0" layoutY="229.0" prefHeight="18.0" prefWidth="96.0" text="Deskribapena">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="Deskribapena" layoutX="152.0" layoutY="226.0" prefHeight="27.0" prefWidth="327.0" />
+            
+            <Label layoutX="37.0" layoutY="267.0" prefHeight="18.0" prefWidth="96.0" text="Potentzia(KW)">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="Potentzia" layoutX="152.0" layoutY="264.0" prefHeight="27.0" prefWidth="327.0" />
+            
+            <Label layoutX="37.0" layoutY="302.0" prefHeight="22.0" prefWidth="115.0" text="Instalazio Data">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="InstalazioData" layoutX="152.0" layoutY="300.0" prefHeight="27.0" prefWidth="327.0" />
+            
+            <Button onAction="#makinaGehitu" layoutX="280.0" layoutY="346.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="70.0" text="GEHITU" />
+            <Button onAction="#Bueltatu" layoutX="534.0" layoutY="331.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="86.0" text="BUELTATU"/>
+
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

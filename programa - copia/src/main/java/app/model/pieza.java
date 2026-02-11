@@ -1,79 +1,79 @@
 package app.model;
 public class pieza {
-    private String id;
-    private String izena;
-    private String deskribapena;
-    private int prezioa;
-    private String pisua;
-    private int stock;
-    private String id_pieza_Mota;
+    private String Id_pieza;
+    private String Izena;
+    private String Deskribapena;
+    private String Pisua;
+    private double  Prezioa;
+    private int Stock;
+    private String Id_pieza_Mota;
 
-    public pieza(String id, String izena, String deskribapena,String pisua, int prezioa, int stock, String id_pieza_Mota) {
-        this.id = id;
-        this.izena = izena;
-        this.deskribapena = deskribapena;
-        this.pisua = pisua; 
-        this.prezioa = prezioa;
-        this.stock = stock;
-        this.id_pieza_Mota = id_pieza_Mota;
+    public pieza(String id, String izena, String deskribapena,String pisua, double prezioa, int stock, String id_pieza_Mota) {
+        this.Id_pieza = id;
+        this.Izena = izena;
+        this.Deskribapena = deskribapena;
+        this.Pisua = pisua; 
+        this.Prezioa = prezioa;
+        this.Stock = stock;
+        this.Id_pieza_Mota = id_pieza_Mota;
         }
 
     public String getId() {
-        return id;
+        return Id_pieza;
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.Id_pieza = id;
     }
 
     public String getIzena() {
-        return izena;
+        return Izena;
     }
 
     public void setIzena(String izena) {
-        this.izena = izena;
+        this.Izena = izena;
     }
 
     public String getDeskribapena() {
-        return deskribapena;
+        return Deskribapena;
     }
 
     public void setDeskribapena(String deskribapena) {
-        this.deskribapena = deskribapena;
+        this.Deskribapena = deskribapena;
     }
     public String getPisua() {
-        return pisua;
+        return Pisua;
     }  
     public void setPisua(String pisua) {
-        this.pisua = pisua;
+        this.Pisua = pisua;
     }
 
 
-    public int getPrezioa() {
-        return prezioa;
+    public double getPrezioa() {
+        return Prezioa;
     }
 
-    public void setPrezioa(int prezioa) {
-        this.prezioa = prezioa;
+    public void setPrezioa(double prezioa) {
+        this.Prezioa = prezioa;
     }
 
     public int getStock() {
-        return stock;
+        return Stock;
     }
 
     public void setStock(int stock) {
-        this.stock = stock;
+        this.Stock = stock;
     }
     public String getId_pieza_Mota() {
-        return id_pieza_Mota;
+        return Id_pieza_Mota;
     }
     public void setId_pieza_Mota(String id_pieza_Mota) {
-        this.id_pieza_Mota = id_pieza_Mota;
+        this.Id_pieza_Mota = id_pieza_Mota;
     }
     @Override
     public String toString() {
-        return "pieza [id=" + id + ", izena=" + izena + ", deskribapena=" + deskribapena + ", prezioa=" + prezioa
-                + ", stock=" + stock + ", id pieza Mota=" + id_pieza_Mota + "]";
+        return "pieza [id=" + Id_pieza + ", izena=" + Izena + ", deskribapena=" + Deskribapena + ", prezioa=" + Prezioa
+                + ", stock=" + Stock + ", id pieza Mota=" + Id_pieza_Mota + "]";
     }
 
 

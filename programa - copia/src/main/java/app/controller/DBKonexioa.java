@@ -1,4 +1,4 @@
-package app;
+package app.controller;
 import java.sql.Connection;      // Datu baserekin lotzeko "komunikazio kanala" da.
 import java.sql.DriverManager;   // Konexioa egiteaz arduratzen da.
 import java.sql.SQLException;    // SKL egoera bereziak/erroreak kudeatzeko aukera ematen du

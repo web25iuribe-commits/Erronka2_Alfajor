@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import app.App;
-import app.DBKonexioa;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
@@ -14,18 +13,18 @@ public class piezaGehitu {
 
         @FXML
     private void makinakMenu() throws Exception {
-        App.setRoot("Makinak_printzipala");
+        App.setRoot("Makina_printzipala");
     }
     @FXML
     private void erabiltzaileakMenu() throws Exception {
-        App.setRoot("Erabiltzaileak_printzipala");
+        App.setRoot("Erabiltzailea_printzipala");
     }
 
-    /*  @FXML
+        @FXML
     private void piezakMenu() throws Exception {    
         App.setRoot("Pieza_printzipala");
     }
-    */ 
+    
         @FXML
     private void menuaMenu() throws Exception {    
         App.setRoot("menua (1)");

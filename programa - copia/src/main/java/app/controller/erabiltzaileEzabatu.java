@@ -8,9 +8,9 @@ import app.App;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
-public class piezaEzabatu {
+public class erabiltzaileEzabatu {
     
-    @FXML
+        @FXML
     private void makinakMenu() throws Exception {
         App.setRoot("Makina_printzipala");
     }
@@ -23,18 +23,18 @@ public class piezaEzabatu {
     private void piezakMenu() throws Exception {    
         App.setRoot("Pieza_printzipala");
     }
- 
-    @FXML
+     
+        @FXML
     private void menuaMenu() throws Exception {    
         App.setRoot("menua (1)");
     }
 
-    @FXML private TextField idPiezaEzabatu;
+    @FXML private TextField id_erabiltzailea;
 
-    @FXML
-    private void piezaEzabatu() throws IOException {
-        
-        String id = idPiezaEzabatu.getText();
+     @FXML
+    private void erabiltzaileEzabatu() throws IOException {
+
+        String id = id_erabiltzailea.getText();
 
         System.out.println("ID-a ezabatu da: " + id);
 
@@ -48,8 +48,6 @@ public class piezaEzabatu {
             return;
         }
 
-        
-
         DBKonexioa konex = new DBKonexioa();
         Connection cn = null;
 
@@ -59,7 +57,7 @@ public class piezaEzabatu {
 
             // konexioa existitzen dela eta irekita dagoela konprobatzen du
             if (cn != null && !cn.isClosed()) {
-                String sql = "DELETE FROM PIEZA WHERE Id_pieza = ?";
+                String sql = "DELETE FROM ERABILTZAILEA WHERE Id_erabiltzailea = ?";
                 java.sql.PreparedStatement ps = cn.prepareStatement(sql);
                 ps.setString(1, id);
                 ps.executeUpdate();
@@ -76,12 +74,12 @@ public class piezaEzabatu {
         }
 
 
-        System.out.println("Pieza ezabatu da!");
-        App.setRoot("Pieza_printzipala");
+        System.out.println("Erabiltzailea ezabatu da!");
+        App.setRoot("Erabiltzailea_printzipala");
     }
     @FXML
     private void Bueltatu() throws IOException {
-        App.setRoot("Pieza_printzipala");
+        App.setRoot("Erabiltzailea_printzipala");
     }
 
 }
