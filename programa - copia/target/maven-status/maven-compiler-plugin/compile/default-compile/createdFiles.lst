@@ -1,6 +1,8 @@
 app\App.class
+app\controller\makinaAldatu.class
 app\controller\makinaGehitu.class
 app\controller\erabiltzaileAldatu.class
+app\controller\makinaEzabatu.class
 app\controller\erabiltzaileGehitu.class
 app\controller\piezaEzabatu.class
 module-info.class

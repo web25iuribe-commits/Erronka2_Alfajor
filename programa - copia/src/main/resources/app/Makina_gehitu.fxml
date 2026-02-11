@@ -18,7 +18,7 @@
          <children>
             <MenuButton layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="520.0" text="ALFAJOR - MAKINA GEHITU">
                <items>
-                  <MenuItem onAction="#menuaMenu" text="Menua" />
+                  <MenuItem onAction="#menuaMenu" mnemonicParsing="false" text="Menua" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem onAction="#erabiltzaileakMenu" mnemonicParsing="false" text="Erabiltzaileak" />
                   <SeparatorMenuItem mnemonicParsing="false" />
@@ -68,7 +68,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="InstalazioData" layoutX="152.0" layoutY="300.0" prefHeight="27.0" prefWidth="327.0" />
+            <TextField fx:id="Instalazio_data" layoutX="152.0" layoutY="300.0" prefHeight="27.0" prefWidth="327.0" />
             
             <Button onAction="#makinaGehitu" layoutX="280.0" layoutY="346.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="70.0" text="GEHITU" />
             <Button onAction="#Bueltatu" layoutX="534.0" layoutY="331.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="86.0" text="BUELTATU"/>

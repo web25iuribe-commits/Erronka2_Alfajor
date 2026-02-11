@@ -28,7 +28,13 @@ public class makinaPrintzipala {
         App.setRoot("menua (1)"); 
     }
     @FXML private void makinaGehitu() throws Exception {
-        App.setRoot("Makina_Gehitu");
+        App.setRoot("Makina_gehitu");
+    }
+    @FXML private void makinaEzabatu() throws Exception {
+        App.setRoot("Makina_ezabatu");
+    }
+    @FXML private void makinaAldatu() throws Exception {
+        App.setRoot("Makina_aldatu");
     }
 
 
