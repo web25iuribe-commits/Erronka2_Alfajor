@@ -4,7 +4,7 @@ async function login() {
 
     try {
         const accounts = await fetch('./../accounts/accounts.json').then(r => r.json());
-        const products = await fetch('./../products/produktuak.json').then(r => r.json());
+        const products = await fetch('./../products/piezak.json').then(r => r.json());
 
         // Bilatu erabiltzailea
         const user = accounts.find(u => u.username == usernameInput && u.password == passwordInput);

@@ -1,0 +1,74 @@
+[
+	{
+		"Id_pieza" : "101",
+		"Id_pieza_mota" : null,
+		"Izena" : "Torloju herdoilgaitza",
+		"Deskribapena" : "M8 neurriko torloju industriala",
+		"Pisua" : "15",
+		"Prezioa" : 1,
+		"Stock" : 250
+	},
+	{
+		"Id_pieza" : "102",
+		"Id_pieza_mota" : null,
+		"Izena" : "Engranaje nagusia",
+		"Deskribapena" : "Altzairuzko transmisio pieza",
+		"Pisua" : "2500",
+		"Prezioa" : 1,
+		"Stock" : 174
+	},
+	{
+		"Id_pieza" : "103",
+		"Id_pieza_mota" : null,
+		"Izena" : "Lotura plaka",
+		"Deskribapena" : "L formako euskarri metalikoa",
+		"Pisua" : "450",
+		"Prezioa" : 2,
+		"Stock" : 75
+	},
+	{
+		"Id_pieza" : "104",
+		"Id_pieza_mota" : null,
+		"Izena" : "Torloju auto-zulatzailea",
+		"Deskribapena" : "Zura lotzeko punta zorrotzeko torlojua",
+		"Pisua" : "8",
+		"Prezioa" : 1,
+		"Stock" : 101
+	},
+	{
+		"Id_pieza" : "105",
+		"Id_pieza_mota" : null,
+		"Izena" : "Engranaje konikoa",
+		"Deskribapena" : "Mugimenduaren norabidea aldatzeko pieza",
+		"Pisua" : "850",
+		"Prezioa" : 3,
+		"Stock" : 322
+	},
+	{
+		"Id_pieza" : "106",
+		"Id_pieza_mota" : null,
+		"Izena" : "Zulaturiko plaka",
+		"Deskribapena" : "Muntaia anitzetarako aluminiozko plaka",
+		"Pisua" : "320",
+		"Prezioa" : 1,
+		"Stock" : 71
+	},
+	{
+		"Id_pieza" : "107",
+		"Id_pieza_mota" : null,
+		"Izena" : "Engranaje helikoidala",
+		"Deskribapena" : "Transmisio isilerako hortz inklinatuko pieza",
+		"Pisua" : "1100",
+		"Prezioa" : 4,
+		"Stock" : 86
+	},
+	{
+		"Id_pieza" : "108",
+		"Id_pieza_mota" : null,
+		"Izena" : "Allen torlojua",
+		"Deskribapena" : "Burua barne-hexagonal duna altzairu beltza",
+		"Pisua" : "12",
+		"Prezioa" : 1,
+		"Stock" : 39
+	}
+]
