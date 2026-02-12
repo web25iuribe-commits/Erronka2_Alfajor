@@ -1,3 +1,8 @@
 {
-    "liveServer.settings.port": 5501
+ "java.project.referencedLibraries": [
+    "lib/**/*.jar",
+    "Irakurri/lib/mysql-connector-java-9..0.jar"
+ ],
+ "java.debug.settings.onBuildFailureProceed": true,
+ "java.configuration.updateBuildConfiguration": "interactive"
 }

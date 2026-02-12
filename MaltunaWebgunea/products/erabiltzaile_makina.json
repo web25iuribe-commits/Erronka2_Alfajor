@@ -1,0 +1,32 @@
+[
+	{
+		"Id_erabiltzailea" : "1",
+		"Id_makina" : "1",
+		"Hasiera_data" : "2024-01-01",
+		"Amaiera_data" : "2024-06-30"
+	},
+	{
+		"Id_erabiltzailea" : "2",
+		"Id_makina" : "1",
+		"Hasiera_data" : "2024-01-01",
+		"Amaiera_data" : "2024-12-31"
+	},
+	{
+		"Id_erabiltzailea" : "4",
+		"Id_makina" : "2",
+		"Hasiera_data" : "2024-01-10",
+		"Amaiera_data" : "2024-05-20"
+	},
+	{
+		"Id_erabiltzailea" : "6",
+		"Id_makina" : "1",
+		"Hasiera_data" : "2024-01-15",
+		"Amaiera_data" : "2024-04-10"
+	},
+	{
+		"Id_erabiltzailea" : "8",
+		"Id_makina" : "3",
+		"Hasiera_data" : "2024-02-01",
+		"Amaiera_data" : "2024-11-30"
+	}
+]

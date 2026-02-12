@@ -6,22 +6,29 @@ public class Pieza_eta_makinak_lotura {
 
     public static void main(String[] args) {
 
-        String fitxategia = "csv_irakurketa/csv/pieza_eta_makinak_lotura.csv";
+        String fitxategia = "csv/pieza_eta_makinak_lotura.csv";
+        String lerroa;
 
         try (BufferedReader br = new BufferedReader(new FileReader(fitxategia))) {
-            String lerroa;
+
+            System.out.println("--- PIEZA ETA MAKINAK LOTURA ---");
+
+            // Si quieres saltar la primera línea (cabecera), descomenta la siguiente línea:
+            // br.readLine(); 
 
             while ((lerroa = br.readLine()) != null) {
+                
                 String[] datuak = lerroa.split(",");
 
-                System.out.println("Id pieza: " + datuak[0]);
-                System.out.println("Id makina: " + datuak[1]);
-                System.out.println("-----------");
+                // Verificamos que haya datos suficientes para evitar errores
+                if (datuak.length >= 2) {
+                    // Imprimimos simple: PIEZA_ID | MAKINA_ID
+                    System.out.println(datuak[0] + " | " + datuak[1]);
+                }
             }
-			br.close();
 
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Errorea fitxategia irakurtzean: " + e.getMessage());
         }
     }
 }
