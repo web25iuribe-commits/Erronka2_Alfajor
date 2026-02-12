@@ -7,6 +7,8 @@ import java.sql.SQLException;
 
 import app.App;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
 
 public class piezaGehitu {
@@ -42,6 +44,9 @@ public class piezaGehitu {
     @FXML
     private void piezaGehitu() throws IOException {
 
+        Alert alert = new Alert(AlertType.ERROR);
+        Alert alerta = new Alert(AlertType.INFORMATION);
+
         String id = idPieza.getText();
         String izena = izenaPieza.getText();
         String deskribapena = deskribapenaPieza.getText();
@@ -58,62 +63,98 @@ public class piezaGehitu {
 
         // DATU GUZTIAK BETE BEHAR DIRA.
         if ( id.isEmpty() || izena.isEmpty() || deskribapena.isEmpty() || prezioa <= 0 || stock <= 0 || pisua.isEmpty() ) {
-            System.out.println("ERROREA: Datu guztiak bete behar dira.");
+            alert.setTitle("ERROREA"); 
+            alert.setHeaderText(null); 
+            alert.setContentText("ERROREA: Datu guztiak bete behar dira."); 
+            alert.showAndWait();
             return;
-        }
+         }
 
         // ATRIBUTU BAKOITZAREN KARAKTERE MAXIMOAK KONTROLATU.
         if (izena.length() > 20) {
-            System.out.println("ERROREA: Izena ezin da 20 karaktere baino gehiago izan");
-        return;
+            alert.setTitle("ERROREA"); 
+            alert.setHeaderText(null); 
+            alert.setContentText("Izena ezin da 20 karaktere baino gehiago izan."); 
+            alert.showAndWait(); 
+            return;
         }
         if (id.length() > 4) {
-            System.out.println("ERROREA: ID-ak 4 karaktere baino gehiago ditu.");
+            alert.setTitle("ERROREA"); 
+            alert.setHeaderText(null); 
+            alert.setContentText("Id-a ezin da 4 karaktere baino gehiago izan"); 
+            alert.showAndWait(); 
             return;
         }
         if (deskribapena.length() > 150) {
-            System.out.println("ERROREA: Deskribapenak 150 karaktere baino gehiago ditu.");
+            alert.setTitle("ERROREA"); 
+            alert.setHeaderText(null); 
+            alert.setContentText("Deskribapenak 150 karaktere baino gehiago ditu."); 
+            alert.showAndWait(); 
+
             return;
         }
         if (String.valueOf(prezioa).length() > 10) {
-            System.out.println("ERROREA: Prezioak 10 karaktere baino gehiago ditu.");
+            alert.setTitle("ERROREA"); 
+            alert.setHeaderText(null); 
+            alert.setContentText("Prezioak 10 karaktere baino gehiago ditu."); 
+            alert.showAndWait(); 
             return;
         }
         if (String.valueOf(stock).length() > 7) {
-            System.out.println("ERROREA: Stock-ak 7 karaktere baino gehiago ditu.");
+            alert.setTitle("ERROREA"); 
+            alert.setHeaderText(null); 
+            alert.setContentText("Stock-ak 7 karaktere baino gehiago ditu."); 
+            alert.showAndWait(); 
             return;
         }
-
         // PREZIOA, STOCK-A ETA PISUA ZENBAKIAK IZAN BEHAR DIRA ETA EZIN DIRA NEGATIBOAK IZAN.
         try {
             double prezioaDouble = Double.parseDouble(String.valueOf(prezioa));
             if (prezioaDouble <= 0) {
-                System.out.println("ERROREA: Prezioa ezin da negatiboa edo zero izan.");
+                alert.setTitle("ERROREA"); 
+                alert.setHeaderText(null);
+                alert.setContentText("Prezioa ezin da negatiboa edo 0 izan."); 
+                alert.showAndWait();            
                 return;
             }
         } catch (NumberFormatException e) {
-            System.out.println("ERROREA: Prezioa zenbaki bat izan behar da.");
-            return;      
+            alert.setTitle("ERROREA"); 
+            alert.setHeaderText(null);
+            alert.setContentText("Prezioa zenbakia izan behar da."); 
+            alert.showAndWait();
+            return;    
         }
         try {
             int stockInt = Integer.parseInt(String.valueOf(stock));
-            if (stockInt <= 0) {
-                System.out.println("ERROREA: Stock-a ezin da negatiboa edo zero izan.");
+            if (stockInt < 0) {
+                alert.setTitle("ERROREA"); 
+                alert.setHeaderText(null);
+                alert.setContentText("Stock-a ezin da negatiboa izan."); 
+                alert.showAndWait();            
                 return;
             }
         } catch (NumberFormatException e) {
-            System.out.println("ERROREA: Stock-a zenbaki bat izan behar da.");
+            alert.setTitle("ERROREA"); 
+            alert.setHeaderText(null);
+            alert.setContentText("Stock-a zenbakia izan behar da."); 
+            alert.showAndWait();
             return;
         }
 
         try {
             int pisuaInt = Integer.parseInt(pisua);
             if (pisuaInt <= 0) {
-                System.out.println("ERROREA: Pisua ezin da negatiboa izan.");
-                return;
+            alert.setTitle("ERROREA"); 
+            alert.setHeaderText(null);
+            alert.setContentText("Pisua ezin da negatiboa edo 0 izan."); 
+            alert.showAndWait();            
+            return;
             }
         } catch (NumberFormatException e) {
-            System.out.println("ERROREA: Pisuak zenbaki bat izan behar da.");
+            alert.setTitle("ERROREA"); 
+            alert.setHeaderText(null);
+            alert.setContentText("Pisua zenbakia izan behar da."); 
+            alert.showAndWait();
             return;
         }
 
@@ -136,10 +177,15 @@ public class piezaGehitu {
                 ps.setInt(6, Integer.parseInt(String.valueOf(stock)));
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected > 0) {
-                    System.out.println("Pieza gehitu da datu-basean!");
+                    alerta.setTitle("GEHITUTA!"); 
+                    alerta.setHeaderText(null);
+                    alerta.setContentText("Pieza gehitu da datu-basean!"); 
+                    alerta.showAndWait();
                     App.setRoot("Pieza_printzipala");
                 } else {
-                    System.out.println("Errorea: Pieza ez da gehitu.");
+                    alert.setTitle("ERROREA"); 
+                    alert.setHeaderText(null);
+                    alert.setContentText("Pieza ez da gehitu.");
                 }
                 ps.close();
                 cn.close();
@@ -147,7 +193,9 @@ public class piezaGehitu {
             }
 
         } catch (SQLException e) {
-            System.out.println("Errorea datu-basera konektatzean");
+            alert.setTitle("ERROREA"); 
+            alert.setHeaderText(null);
+            alert.setContentText("Errorea datu-basera konektatzean"); 
             e.printStackTrace();
         }
         

@@ -61,7 +61,8 @@
             <TextField fx:id="izenaErabiltzailea" layoutX="329.0" layoutY="107.0" prefHeight="27.0" prefWidth="165.0" />
             <TextField fx:id="abizenaErabiltzailea" layoutX="169.0" layoutY="149.0" prefHeight="27.0" prefWidth="115.0" />
             <TextField fx:id="helbideaErabiltzailea" layoutX="168.0" layoutY="191.0" prefHeight="27.0" prefWidth="327.0" />
-            <Button  onAction="#erabiltzaileGehitu" layoutX="285.0" layoutY="349.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="78.0" text="GEHITU" />
+            <Button onAction="#erabiltzaileGehitu" layoutX="285.0" layoutY="349.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="78.0" text="GEHITU" />
+            <Button onAction="#Bueltatu" layoutX="426.0" layoutY="349.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="96.0" text="BUELTATU" />
             <TextField fx:id="postaKodeaErabiltzailea" layoutX="168.0" layoutY="267.0" prefHeight="27.0" prefWidth="327.0" />
             <TextField fx:id="emailErabiltzailea" layoutX="167.0" layoutY="232.0" prefHeight="27.0" prefWidth="327.0" />
             <Label layoutX="53.0" layoutY="270.0" prefHeight="18.0" prefWidth="96.0" text="Posta kodea">

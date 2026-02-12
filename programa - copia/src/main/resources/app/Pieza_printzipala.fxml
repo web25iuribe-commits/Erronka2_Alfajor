@@ -40,9 +40,9 @@
                   <TableColumn fx:id="idPiezaMotaColumn" prefWidth="72.0" text="ID_Pieza_Mota" />
               </columns>
             </TableView>
-            <Button  onAction="#piezaAldatu" layoutX="338.0" layoutY="320.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="74.0" text="Aldatu" />
-            <Button  onAction="#piezaEzabatu" layoutX="112.0" layoutY="320.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="74.0" text="Ezabatu" />
-            <Button  onAction="#piezaGehitu" layoutX="222.0" layoutY="320.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="74.0" text="Gehitu" />
+            <Button onAction="#piezaAldatu" layoutX="338.0" layoutY="320.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="74.0" text="Aldatu" />
+            <Button onAction="#piezaEzabatu" layoutX="112.0" layoutY="320.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="74.0" text="Ezabatu" />
+            <Button onAction="#piezaGehitu" layoutX="222.0" layoutY="320.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="74.0" text="Gehitu" />
          </children>
       </AnchorPane>
    </children> 

@@ -42,6 +42,7 @@
             </Label>
             <TextField fx:id="id_erabiltzailea" layoutX="212.0" layoutY="217.0" prefHeight="27.0" prefWidth="213.0" />
             <Button onAction="#erabiltzaileEzabatu" layoutX="271.0" layoutY="290.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="96.0" text="EZABATU" />
+            <Button onAction="#Bueltatu" layoutX="426.0" layoutY="290.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="96.0" text="BUELTATU" />
          </children>
       </AnchorPane>
    </children>

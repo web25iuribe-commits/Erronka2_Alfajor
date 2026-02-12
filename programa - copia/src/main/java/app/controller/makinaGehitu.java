@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 
 import app.App;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
 
 public class makinaGehitu {
@@ -33,6 +35,9 @@ public class makinaGehitu {
    @FXML
 private void makinaGehitu() throws Exception {
 
+    Alert alert = new Alert(AlertType.ERROR);
+    Alert alerta = new Alert(AlertType.INFORMATION);
+
     String id = Id_makina.getText().trim(); 
     String izena = Izena.getText().trim(); 
     String instalazio_data = Instalazio_data.getText().trim(); 
@@ -50,28 +55,43 @@ private void makinaGehitu() throws Exception {
     if (id.isEmpty() || izena.isEmpty() || instalazio_data.isEmpty() ||
         deskribapena.isEmpty() || potentziaStr.isEmpty()) {
 
-        System.out.println("ERROREA: Datu guztiak bete behar dira.");
+        alert.setTitle("ERROREA"); 
+        alert.setHeaderText(null); 
+        alert.setContentText("ERROREA: Datu guztiak bete behar dira."); 
+        alert.showAndWait();
         return;
     }
-
     // 2) Luzerak
     if (id.length() > 4) {
-        System.out.println("ERROREA: ID-ak 4 karaktere baino gehiago ditu.");
+        alert.setTitle("ERROREA"); 
+        alert.setHeaderText(null); 
+        alert.setContentText("Id-a ezin da 4 karaktere baino gehiago izan"); 
+        alert.showAndWait(); 
         return;
     }
 
     if (izena.length() > 30) {
-        System.out.println("ERROREA: Izena ezin da 30 karaktere baino gehiago izan.");
+        alert.setTitle("ERROREA"); 
+        alert.setHeaderText(null); 
+        alert.setContentText("Izena ezin da 30 karaktere baino gehiago izan."); 
+        alert.showAndWait(); 
         return;
     }
 
     if (instalazio_data.length() > 20) {
-        System.out.println("ERROREA: Instalazio datak 20 karaktere baino gehiago ditu.");
+        alert.setTitle("ERROREA"); 
+        alert.setHeaderText(null); 
+        alert.setContentText("Instalazio datak 20 karaktere baino gehiago ditu."); 
+        alert.showAndWait(); 
         return;
     }
 
     if (deskribapena.length() > 150) {
-        System.out.println("ERROREA: Deskribapenak 150 karaktere baino gehiago ditu.");
+        alert.setTitle("ERROREA"); 
+        alert.setHeaderText(null); 
+        alert.setContentText("Deskribapenak 150 karaktere baino gehiago ditu."); 
+        alert.showAndWait(); 
+
         return;
     }
 
@@ -80,30 +100,61 @@ private void makinaGehitu() throws Exception {
     try {
         potentziaInt = Integer.parseInt(potentziaStr);
         if (potentziaInt < 0) {
-            System.out.println("ERROREA: Potentzia ezin da negatiboa izan.");
+            alert.setTitle("ERROREA"); 
+            alert.setHeaderText(null);
+            alert.setContentText("Potentzia ezin da negatiboa izan."); 
+            alert.showAndWait();            
             return;
         }
     } catch (NumberFormatException e) {
-        System.out.println("ERROREA: Potentzia zenbakia izan behar da.");
+        alert.setTitle("ERROREA"); 
+        alert.setHeaderText(null);
+        alert.setContentText("Potentzia zenbakia izan behar da."); 
+        alert.showAndWait();
         return;
     }
 
-    String sql = "INSERT INTO MAKINA (Id_makina, Izena, Instalazio_data, Deskribapena, Potentzia) VALUES (?, ?, ?, ?, ?)"; 
-     try (Connection conn = new DBKonexioa().konektatu(); 
-     PreparedStatement stmt = conn.prepareStatement(sql)) { 
-        stmt.setString(1, id); 
-        stmt.setString(2, izena); 
-        stmt.setString(3, instalazio_data); 
-        stmt.setString(4, deskribapena); 
-        stmt.setInt(5, potentziaInt); 
-        stmt.executeUpdate(); 
-        System.out.println("Makina ondo gehitu da!"); 
-    } catch (Exception e) { 
-        System.out.println("ERROREA: Ezin izan da makina gehitu."); 
+    DBKonexioa konex = new DBKonexioa();
+    Connection cn = null;
+
+    try {
+        cn = konex.konektatu();
+        System.out.println("Konexioa: " + (cn != null && !cn.isClosed()));
+        String sql = "INSERT INTO MAKINA (Id_makina, Izena, Instalazio_data, Deskribapena, Potentzia) VALUES (?, ?, ?, ?, ?)"; 
+     
+        PreparedStatement ps = cn.prepareStatement(sql);  
+        ps.setString(1, id); 
+        ps.setString(2, izena); 
+        ps.setString(3, instalazio_data); 
+        ps.setString(4, deskribapena); 
+        ps.setInt(5, potentziaInt); 
+
+        int rowsAffected = ps.executeUpdate();    
+
+        if (rowsAffected > 0) {
+        alerta.setTitle("GEHITUTA!"); 
+        alerta.setHeaderText(null);
+        alerta.setContentText("Makina gehitu da datu-basean!"); 
+        alerta.showAndWait();
+        App.setRoot("Makina_printzipala");
+        } else {
+            alert.setTitle("ERROREA"); 
+            alert.setHeaderText(null);
+            alert.setContentText("Makina ez da gehitu.");
+        }
+
+        ps.close();
+        cn.close();
+        System.out.println("Konexioa itxi da.");
+
+    }catch (Exception e) { 
+        alert.setTitle("ERROREA"); 
+        alert.setHeaderText(null);
+        alert.setContentText("Errorea datu-basera konektatzean"); 
         e.printStackTrace();
+        }
     }
-}
-    @FXML 
+     @FXML 
 private void Bueltatu() throws Exception { 
     App.setRoot("Makina_printzipala"); 
 }

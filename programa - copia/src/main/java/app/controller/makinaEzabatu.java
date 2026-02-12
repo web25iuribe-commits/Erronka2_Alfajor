@@ -1,11 +1,12 @@
 package app.controller;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import app.App;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
 
 public class makinaEzabatu {
@@ -32,48 +33,68 @@ public class makinaEzabatu {
     @FXML
 private void makinaEzabatu() throws Exception {
 
+    Alert alert = new Alert(AlertType.ERROR);
+    Alert alerta = new Alert(AlertType.INFORMATION);
+
     String id = id_makina.getText().trim();
 
-    System.out.println("ID-a ezabatu da: " + id);
-
     if (id.isEmpty()) {
-        System.out.println("ERROREA: ID bete behar da.");
+        alert.setTitle("ERROREA"); 
+        alert.setHeaderText(null);
+        alert.setContentText("ID-a hutsik dago."); 
+        alert.showAndWait();
+        App.setRoot("Makina_printzipala");
         return;
     }
 
     if (id.length() > 4) {
-        System.out.println("ERROREA: ID-ak 4 karaktere baino gehiago ditu.");
+        alert.setTitle("ERROREA"); 
+        alert.setHeaderText(null);
+        alert.setContentText(" ID-ak 4 karaktere baino gehiago ditu."); 
+        alert.showAndWait();
         return;
     }
-
     DBKonexioa konex = new DBKonexioa();
+    Connection cn = null;
 
-    try (Connection cn = konex.konektatu()) {
+    try {
+        cn = konex.konektatu();
 
         if (cn != null && !cn.isClosed()) {
 
-            String sql = "DELETE FROM MAKINA WHERE Id_makina = ?";
-            PreparedStatement ps = cn.prepareStatement(sql);
-            ps.setString(1, id);
-
-            int rows = ps.executeUpdate();
+            String sqlCheck = "SELECT COUNT(*) FROM MAKINA WHERE Id_makina = ?"; 
+            java.sql.PreparedStatement psCheck = cn.prepareStatement(sqlCheck); 
+            psCheck.setString(1, id); 
+            java.sql.ResultSet rs = psCheck.executeQuery(); 
+            rs.next(); 
+            if (rs.getInt(1) == 0) {
+                alert.setHeaderText(null); 
+                alert.setContentText("Ezin da ezabatu: makina hori ez dago datu-basean."); 
+                alert.showAndWait(); 
+                return; 
+            } 
+            String sql = "DELETE FROM MAKINA WHERE Id_makina = ?"; 
+            java.sql.PreparedStatement ps = cn.prepareStatement(sql); 
+            ps.setString(1, id); 
+            ps.executeUpdate(); 
             ps.close();
 
-            if (rows > 0) {
-                System.out.println("Makina ezabatu da!");
-                App.setRoot("Makina_printzipala");
-
-            } else {
-                System.out.println("Ez da makina aurkitu.");
-            }
+            cn.close();
+        }     
+        } catch (SQLException e) { 
+            alert.setTitle("ERROREA"); 
+            alert.setHeaderText(null); 
+            alert.setContentText("Errorea datu-basera konektatzean."); 
+            alert.showAndWait(); 
+            return;
         }
-
-    } catch (SQLException e) {
-        System.out.println("Errorea datu-basera konektatzean");
-        e.printStackTrace();
+        alerta.setTitle("EZABATUTA!");
+        alerta.setHeaderText(null); 
+        alerta.setContentText("Makina ezabatu da datu-basean!"); 
+        App.setRoot("Makina_printzipala");
+        alerta.showAndWait(); 
     }
-}
-    @FXML
+     @FXML
     private void Bueltatu() throws Exception {
         App.setRoot("Makina_printzipala");
     }

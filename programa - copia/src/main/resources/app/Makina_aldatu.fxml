@@ -64,7 +64,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="Instalazio_data" layoutX="178.0" layoutY="258.0" prefHeight="27.0" prefWidth="327.0" />
+            <TextField fx:id="Instalazio_data" layoutX="178.0" layoutY="258.0" prefHeight="27.0" prefWidth="327.0" promptText="YYYY-MM-DD"/>
             <Button onAction="#makinaAldatu" layoutX="430.0" layoutY="330.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="ALDATU" />
             <Button onAction="#Bueltatu" layoutX="511.0" layoutY="330.0" mnemonicParsing="false" text="BUELTATU" />
          </children>

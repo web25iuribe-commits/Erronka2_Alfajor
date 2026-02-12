@@ -55,7 +55,7 @@
             </MenuButton>
             <ImageView fx:id="miguel_altuna" fitHeight="248.0" fitWidth="345.0" layoutX="154.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@miguel-altuna.jpg" />
+                  <Image url="@argazkiak/miguel-altuna.jpg" />
                </image>
             </ImageView>
       </children>

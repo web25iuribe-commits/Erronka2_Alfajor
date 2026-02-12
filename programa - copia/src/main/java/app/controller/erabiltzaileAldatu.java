@@ -8,6 +8,8 @@ import java.sql.SQLException;
 
 import app.App;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
@@ -45,6 +47,9 @@ public class erabiltzaileAldatu {
     @FXML
     private void erabiltzaileaAldatuBotoia() throws Exception {    
 
+        Alert alert = new Alert(AlertType.ERROR);
+        Alert alerta = new Alert(AlertType.INFORMATION);
+
         String id_erab = id_erabiltzailea.getText(); 
         String izenaErab = izena.getText(); 
         String abizena1Erab = abizena1.getText();
@@ -66,32 +71,64 @@ public class erabiltzaileAldatu {
         System.out.println("Jaiotze data: " + jaiotzeDataErab);
         System.out.println("Alta data: " + altaDataErab);
 
+         String postaKodeaStr = postaKodea.getText().trim();
+        if (id_erab.isEmpty() || izenaErab.isEmpty() || abizena1Erab.isEmpty() || helbideaErab.isEmpty()
+            || emailErab.isEmpty() || NANErab.isEmpty() || postaKodeaStr.isEmpty()
+            || jaiotze_data.getValue() == null
+            || alta_data.getValue() == null) {
+            alert.setTitle("ERROREA"); 
+            alert.setHeaderText(null); 
+            alert.setContentText("ERROREA: Datu guztiak bete behar dira."); 
+            alert.showAndWait();
+            return;
+        }
         if (id_erab.length() > 4) {
-            System.out.println("ERROREA: ID-ak 4 karaktere baino gehiago ditu.");
+            alert.setTitle("ERROREA"); 
+            alert.setHeaderText(null);
+            alert.setContentText("ID-ak ezin du 4 karaktere baino gehiago izan."); 
+            alert.showAndWait();
             return;
         }
         if (NANErab.length() != 9) {
-            System.out.println("ERROREA: NAN-ak 9 karaktere izan behar ditu.");
+            alert.setTitle("ERROREA"); 
+            alert.setHeaderText(null);
+            alert.setContentText("NAN-ak 9 karaktere izan behar ditu."); 
+            alert.showAndWait();
             return;
         }
         if (helbideaErab.length() > 150) {
-            System.out.println("ERROREA: Helbideak 150 karaktere baino gehiago ditu.");
+            alert.setTitle("ERROREA"); 
+            alert.setHeaderText(null);
+            alert.setContentText("Helbideak 150 karaktere baino gehiago ditu."); 
+            alert.showAndWait();
             return;
         }
         if (emailErab.length() > 150) {
-            System.out.println("ERROREA: Email-ak 150 karaktere baino gehiago ditu.");
+            alert.setTitle("ERROREA"); 
+            alert.setHeaderText(null);
+            alert.setContentText("Email-ak 150 karaktere baino gehiago ditu."); 
+            alert.showAndWait();
             return;
         }
         if (postaKodeaErab < 0 || postaKodeaErab > 99999) {
-            System.out.println("ERROREA: Posta kodeak 0 eta 99999 arteko balioa izan behar du.");
+            alert.setTitle("ERROREA"); 
+            alert.setHeaderText(null);
+            alert.setContentText("Posta kodeak 0 eta 99999 arteko balioa izan behar du."); 
+            alert.showAndWait();
             return;
         }
         if (jaiotzeDataErab.after(altaDataErab)) {
-            System.out.println("ERROREA: Jaiotze data alta datatik aurrerago dago.");
+            alert.setTitle("ERROREA"); 
+            alert.setHeaderText(null);
+            alert.setContentText("Jaiotze data alta datatik aurrerago dago."); 
+            alert.showAndWait();
             return;
         }  
         if(emailErab.isEmpty() || !emailErab.contains("@") || !emailErab.contains(".")) {
-            System.out.println("ERROREA: Email-ak ez du formatu egokia.");
+            alert.setTitle("ERROREA"); 
+            alert.setHeaderText(null);
+            alert.setContentText(" Email-ak ez du formatu egokia."); 
+            alert.showAndWait();
             return;
         }
         
@@ -116,10 +153,15 @@ public class erabiltzaileAldatu {
                 ps.setString(9, id_erab);
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected > 0) {
-                    System.out.println("Erabiltzailea aldatu da datu-basean!");
+                    alerta.setTitle("ALDATUTA!"); 
+                    alerta.setHeaderText(null); 
+                    alerta.setContentText("Erabiltzailea aldatu da datu-basean!"); 
+                    alerta.showAndWait();
                     App.setRoot("Erabiltzailea_printzipala");
                 } else {
-                    System.out.println("Errorea: Erabiltzailea ez da aldatu.");
+                    alert.setTitle("ERROREA"); 
+                    alert.setHeaderText(null);
+                    alert.setContentText(" Erabiltzailea ez da aldatu.");
                 }
                 ps.close();
                 cn.close();
@@ -127,7 +169,9 @@ public class erabiltzaileAldatu {
             }
 
         } catch (SQLException e) {
-            System.out.println("Errorea datu-basera konektatzean");
+            alert.setTitle("ERROREA"); 
+            alert.setHeaderText(null);
+            alert.setContentText("Errorea datu-basera konektatzean"); 
             e.printStackTrace();
         }
     }

@@ -1,11 +1,14 @@
 package app.controller;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 
 import app.App;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
@@ -42,6 +45,10 @@ public class erabiltzaileGehitu {
 
  @FXML
 private void erabiltzaileGehitu() throws Exception {
+
+    Alert alert = new Alert(AlertType.ERROR);
+    Alert alerta = new Alert(AlertType.INFORMATION);
+
  
     String id = id_erabiltzailea.getText().trim();
     String izena = izenaErabiltzailea.getText().trim();
@@ -49,7 +56,7 @@ private void erabiltzaileGehitu() throws Exception {
     String helbidea = helbideaErabiltzailea.getText().trim();
     String email = emailErabiltzailea.getText().trim();
     String NAN = NANErabiltzailea.getText().trim();
-    String postaKodea = postaKodeaErabiltzailea.getText().trim();
+    int postaKodea = Integer.parseInt(postaKodeaErabiltzailea.getText());
 
     System.out.println("=== SARRERAK ===");
     System.out.println("ID: " + id);
@@ -63,39 +70,80 @@ private void erabiltzaileGehitu() throws Exception {
     System.out.println("AltaData: " + altaDataErabiltzailea.getValue());
 
     // 1) Datu hutsak
+    String postaKodeaStr = postaKodeaErabiltzailea.getText().trim();
     if (id.isEmpty() || izena.isEmpty() || abizena.isEmpty() || helbidea.isEmpty()
-            || email.isEmpty() || NAN.isEmpty() || postaKodea.isEmpty()
+            || email.isEmpty() || NAN.isEmpty() || postaKodeaStr.isEmpty()
             || jaiotzeDataErabiltzailea.getValue() == null
             || altaDataErabiltzailea.getValue() == null) {
-        System.out.println("ERROREA: Datu guztiak bete behar dira.");
+        alert.setTitle("ERROREA"); 
+        alert.setHeaderText(null); 
+        alert.setContentText("ERROREA: Datu guztiak bete behar dira."); 
+        alert.showAndWait();
         return;
     }
-
     // 2) Luzerak
-    if (id.length() > 4) { System.out.println("ERROREA: ID-ak 4 karaktere baino gehiago ditu."); return; }
-    if (izena.length() > 15) { System.out.println("ERROREA: Izena ezin da 15 karaktere baino gehiago izan."); return; }
-    if (abizena.length() > 20) { System.out.println("ERROREA: Abizena ezin da 20 karaktere baino gehiago izan."); return; }
-    if (helbidea.length() > 40) { System.out.println("ERROREA: Helbidea ezin da 40 karaktere baino gehiago izan."); return; }
-    if (email.length() > 40) { System.out.println("ERROREA: Email-ak 40 karaktere baino gehiago ditu."); return; }
-    if (NAN.length() > 9) { System.out.println("ERROREA: NAN-ak 9 karaktere baino gehiago ditu."); return; }
-    if (postaKodea.length() > 5) { System.out.println("ERROREA: Posta kodeak 5 karaktere baino gehiago ditu."); return; }
+    if (id.length() > 4) {         
+        alert.setTitle("ERROREA"); 
+        alert.setHeaderText(null); 
+        alert.setContentText("Id-a ezin da 4 karaktere baino gehiago izan"); 
+        alert.showAndWait(); 
+        return; 
+    }
+    if (izena.length() > 15) {        
+        alert.setTitle("ERROREA"); 
+        alert.setHeaderText(null); 
+        alert.setContentText("Izena ezin da 15 karaktere baino gehiago izan."); 
+        alert.showAndWait(); 
+        return;
+    }
+    if (abizena.length() > 20) {        
+        alert.setTitle("ERROREA"); 
+        alert.setHeaderText(null); 
+        alert.setContentText("Abizena ezin da 20 karaktere baino gehiago izan."); 
+        return;
+    }
+    if (helbidea.length() > 40) {        
+        alert.setTitle("ERROREA"); 
+        alert.setHeaderText(null); 
+        alert.setContentText("Helbidea ezin da 40 karaktere baino gehiago izan."); 
+        alert.showAndWait(); 
+        return; 
+    }
+    if (email.length() > 40) {        
+        alert.setTitle("ERROREA"); 
+        alert.setHeaderText(null); 
+        alert.setContentText("Email-ak 40 karaktere baino gehiago ditu."); 
+        alert.showAndWait();
+        return; 
+    }
+     if(email.isEmpty() || !email.contains("@") || !email.contains(".")) {
+            alert.setTitle("ERROREA"); 
+            alert.setHeaderText(null);
+            alert.setContentText(" Email-ak ez du formatu egokia."); 
+            alert.showAndWait();
+            return;
+        }
+    if (NAN.length() != 9) {        
+        alert.setTitle("ERROREA"); 
+        alert.setHeaderText(null); 
+        alert.setContentText("NAN-ak 9 karaktere izan behar ditu."); 
+        alert.showAndWait();
+        return; 
+    }
+    if (postaKodea < 0 || postaKodea > 99999) {
+            alert.setTitle("ERROREA"); 
+            alert.setHeaderText(null);
+            alert.setContentText("Posta kodeak 0 eta 99999 arteko balioa izan behar du."); 
+            alert.showAndWait();
+            return;
+        }
 
     // 3) Fechen ordena
     if (jaiotzeDataErabiltzailea.getValue().isAfter(altaDataErabiltzailea.getValue())) {
-        System.out.println("ERROREA: Jaiotze data ezin da alta data baino geroago izan.");
-        return;
-    }
-
-    // 4) PostaKodea zenbakia
-    int postaKodeaInt;
-    try {
-        postaKodeaInt = Integer.parseInt(postaKodea);
-        if (postaKodeaInt < 0) {
-            System.out.println("ERROREA: Posta kodea ezin da negatiboa izan.");
-            return;
-        }
-    } catch (NumberFormatException e) {
-        System.out.println("ERROREA: Posta kodea zenbakia izan behar da.");
+        alert.setTitle("ERROREA"); 
+        alert.setHeaderText(null);
+        alert.setContentText("Jaiotze data ezin da alta data baino geroago izan."); 
+        alert.showAndWait();
         return;
     }
 
@@ -116,7 +164,7 @@ private void erabiltzaileGehitu() throws Exception {
         ps.setString(3, abizena);
         ps.setString(4, NAN);
         ps.setString(5, helbidea);
-        ps.setInt(6, postaKodeaInt);
+        ps.setInt(6, postaKodea);
         ps.setString(7, email);
         ps.setDate(8, Date.valueOf(jaiotzeDataErabiltzailea.getValue()));
         ps.setDate(9, Date.valueOf(altaDataErabiltzailea.getValue()));
@@ -124,10 +172,15 @@ private void erabiltzaileGehitu() throws Exception {
         int rowsAffected = ps.executeUpdate();
 
         if (rowsAffected > 0) {
-            System.out.println("Erabiltzailea gehitu da datu-basean!");
-            App.setRoot("Erabiltzailea_printzipala");
+        alerta.setTitle("GEHITUTA!"); 
+        alerta.setHeaderText(null);
+        alerta.setContentText("Erabiltzailea gehitu da datu-basean!"); 
+        alerta.showAndWait();
+        App.setRoot("Erabiltzailea_printzipala");
         } else {
-            System.out.println("Errorea: Erabiltzailea ez da gehitu (rowsAffected = 0).");
+            alert.setTitle("ERROREA"); 
+            alert.setHeaderText(null);
+            alert.setContentText(" Erabiltzailea ez da gehitu.");
         }
 
         ps.close();
@@ -135,8 +188,14 @@ private void erabiltzaileGehitu() throws Exception {
         System.out.println("Konexioa itxi da.");
 
     } catch (Exception e) {
-        System.out.println(">>> SQL ERROREA:");
+        alert.setTitle("ERROREA"); 
+        alert.setHeaderText(null);
+        alert.setContentText("Errorea datu-basera konektatzean"); 
         e.printStackTrace();
     }
 }
+ @FXML
+    private void Bueltatu() throws IOException {
+        App.setRoot("Erabiltzailea_printzipala");
+    }
 }

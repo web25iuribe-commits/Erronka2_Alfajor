@@ -27,7 +27,7 @@
             </MenuButton>
             <ImageView fitHeight="47.0" fitWidth="125.0" layoutX="543.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Argazkiak/images.png" />
+                  <Image url="@argazkiak/images.png" />
                </image>
             </ImageView>
             <Label layoutX="243.0" layoutY="83.0" prefHeight="30.0" prefWidth="154.0" text="Makina Gehitu">
@@ -68,7 +68,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="Instalazio_data" layoutX="152.0" layoutY="300.0" prefHeight="27.0" prefWidth="327.0" />
+            <TextField fx:id="Instalazio_data" layoutX="152.0" layoutY="300.0" prefHeight="27.0" prefWidth="327.0" promptText="YYYY-MM-DD"/>
             
             <Button onAction="#makinaGehitu" layoutX="280.0" layoutY="346.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="70.0" text="GEHITU" />
             <Button onAction="#Bueltatu" layoutX="534.0" layoutY="331.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="86.0" text="BUELTATU"/>
