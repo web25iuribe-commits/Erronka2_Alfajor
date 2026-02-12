@@ -6,11 +6,10 @@ public class ProbaKonexioa {
     public static void main(String[] args) {
 
         DBKonexioa konex = new DBKonexioa();
-        Connection cn = null;
 
         try {
             // konektatu() metodoak SQLException jaurti dezake
-            cn = konex.konektatu();
+            Connection cn = konex.konektatu();
 
             // konexioa existitzen dela eta irekita dagoela konprobatzen du
             if (cn != null && !cn.isClosed()) {

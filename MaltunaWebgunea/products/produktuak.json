@@ -1,6 +1,54 @@
-[{"id":0, "izena":"Arkatza", "prezioa":0.5, "stock":100},
- {"id":1, "izena":"Koadernoa", "prezioa":2.5, "stock":50},
- {"id":2, "izena":"Karpeta", "prezioa":1.75, "stock":80},
- {"id":3, "izena":"Ordenagailua", "prezioa":900.0, "stock":0},
- {"id":4, "izena":"Boligrafoa", "prezioa":2.0, "stock":12}]
- 
+{   "ERABILTZAILEA": 
+    { "columns": 
+        { "Id_erabiltzailea": "VARCHAR(4) PRIMARY KEY", 
+        "Izena": "VARCHAR(15)", 
+        "Abizena1": "VARCHAR(20)", 
+        "NAN": "VARCHAR(9)", 
+        "Helbidea": "VARCHAR(40)", 
+        "PostaKodea": "INT", 
+        "Email": "VARCHAR(40)", 
+        "J_data": "DATE", 
+        "Alta_data": "DATE" 
+        } 
+    }, 
+    "PIEZA_MOTA": 
+    { "columns": 
+        { "Id_pieza_mota": "VARCHAR(4) PRIMARY KEY", 
+        "Izena": "VARCHAR(15)" 
+        } 
+    }, 
+    "PIEZA": 
+    { "columns": 
+        { "Id_pieza": "VARCHAR(4) PRIMARY KEY", 
+        "Id_pieza_mota": "VARCHAR(4) FOREIGN KEY", 
+        "Izena": "VARCHAR(15)", 
+        "Deskribapena": "VARCHAR(150)", 
+        "Pisua": "VARCHAR(15)", 
+        "Prezioa": "DOUBLE CHECK (Prezioa >= 0)", 
+        "Stock": "INT CHECK (Stock >= 0)"
+        }, 
+        "foreign_keys": { "Id_pieza_mota": 
+        { "references": "PIEZA_MOTA(Id_pieza_mota)", "on_update": "CASCADE", "on_delete": "CASCADE" } 
+        } 
+    }, 
+    "MAKINA": 
+    { "columns": 
+        { "Id_makina": "VARCHAR(4) PRIMARY KEY", 
+        "Izena": "VARCHAR(30)", 
+        "Instalazio_data": "VARCHAR(20)", 
+        "Deskribapena": "VARCHAR(150)", 
+        "Potentzia": "INT" 
+        } 
+    }, 
+    "ERABILTZAILEA_MAKINA":
+    { "columns":
+        { "Id_erabiltzailea": "VARCHAR(4)", 
+        "Id_makina": "VARCHAR(4)", 
+        "Hasiera_data": "DATE", 
+        "Amaiera_data": "DATE" }, 
+        "primary_key": [ "Id_erabiltzailea", "Id_makina", "Hasiera_data" ], 
+        "foreign_keys": { "Id_erabiltzailea": { "references": "ERABILTZAILEA(Id_erabiltzailea)", "on_update": "CASCADE", "on_delete": "CASCADE" }, 
+        "Id_makina": { "references": "MAKINA(Id_makina)", "on_update": "CASCADE", "on_delete": "CASCADE" } 
+        } 
+    } 
+}

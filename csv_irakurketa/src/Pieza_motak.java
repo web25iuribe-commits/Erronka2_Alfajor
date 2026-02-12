@@ -1,27 +1,53 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class Pieza_motak {
 
     public static void main(String[] args) {
+        String lerroa;
+        Connection cn = null;
 
-        String fitxategia = "csv_irakurketa/csv/pieza_motak.csv";
+        try (BufferedReader br = new BufferedReader(new FileReader("csv/pieza_motak.csv"))) {
+            DBKonexioa konex = new DBKonexioa();
+            cn = konex.konektatu();
+            br.readLine(); // Goiburua saltatzeko
 
-        try (BufferedReader br = new BufferedReader(new FileReader(fitxategia))) {
-            String lerroa;
+            // != null esan nahi du, ejekutatu egingo dela irakurtzeko lerroak dauden bitartean
+            // .csv-ko lerroak irakurtzen ditu amaierararte
+            String kontsulta = "INSERT INTO PIEZA_MOTA VALUES(?,?)";
+            PreparedStatement agindua = cn.prepareStatement(kontsulta);
 
             while ((lerroa = br.readLine()) != null) {
                 String[] datuak = lerroa.split(",");
+                System.out.println(datuak[0] + "-" + datuak[1]);
 
-                System.out.println("Id pieza mota: " + datuak[0]);
-                System.out.println("Izena: " + datuak[1]);
-                System.out.println("-----------");
+                agindua.setInt(1, Integer.parseInt(datuak[0]));
+                agindua.setString(2, (datuak[1]));
+
+                agindua.executeUpdate();
             }
-			br.close();
+
+            agindua.close();
+
+        } catch (SQLException e) {
+            System.out.println("Errorea datuak sartzean.");
+            e.printStackTrace();
 
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Errorea fitxategia irakurtzean.");
+        } finally {
+            if (cn != null) {
+                try {
+                    cn.close();
+                    System.out.println("Konexioa itxi da.");
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 }

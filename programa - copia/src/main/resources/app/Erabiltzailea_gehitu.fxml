@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.erabiltzaileGehitu">
+   <children>
+      <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+         <children>
+            <MenuButton layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="520.0" text="ALFAJOR - ERABILTZAILEA GEHITU">
+               <items>
+                  <MenuItem onAction="#makinakMenu" mnemonicParsing="false" text="Makinak" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem onAction="#piezakMenu" mnemonicParsing="false" text="Piezak" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem onAction="#menuaMenu" mnemonicParsing="false" text="Menua" />
+               </items>
+            </MenuButton>
+            <ImageView fitHeight="47.0" fitWidth="125.0" layoutX="543.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Argazkiak/images.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="4.0" layoutY="65.0" prefHeight="18.0" prefWidth="642.0" text="Erabiltzailea Gehitu">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="20.0" layoutY="121.0" prefHeight="18.0" prefWidth="508.0" />
+            <Label layoutX="53.0" layoutY="110.0" prefHeight="18.0" prefWidth="115.0" text="ID_Erabiltzailea">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="id_erabiltzailea" layoutX="168.0" layoutY="107.0" prefHeight="27.0" prefWidth="96.0" />
+            <Label layoutX="281.0" layoutY="109.0" prefHeight="22.0" prefWidth="96.0" text="Izena">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="54.0" layoutY="152.0" prefHeight="18.0" prefWidth="96.0" text="Abizena">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="53.0" layoutY="194.0" prefHeight="18.0" prefWidth="96.0" text="Helbidea">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="izenaErabiltzailea" layoutX="329.0" layoutY="107.0" prefHeight="27.0" prefWidth="165.0" />
+            <TextField fx:id="abizenaErabiltzailea" layoutX="169.0" layoutY="149.0" prefHeight="27.0" prefWidth="115.0" />
+            <TextField fx:id="helbideaErabiltzailea" layoutX="168.0" layoutY="191.0" prefHeight="27.0" prefWidth="327.0" />
+            <Button onAction="#erabiltzaileGehitu" layoutX="285.0" layoutY="349.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="78.0" text="GEHITU" />
+            <Button onAction="#Bueltatu" layoutX="426.0" layoutY="349.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="96.0" text="BUELTATU" />
+            <TextField fx:id="postaKodeaErabiltzailea" layoutX="168.0" layoutY="267.0" prefHeight="27.0" prefWidth="327.0" />
+            <TextField fx:id="emailErabiltzailea" layoutX="167.0" layoutY="232.0" prefHeight="27.0" prefWidth="327.0" />
+            <Label layoutX="53.0" layoutY="270.0" prefHeight="18.0" prefWidth="96.0" text="Posta kodea">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="53.0" layoutY="235.0" prefHeight="18.0" prefWidth="96.0" text="Email">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="295.0" layoutY="150.0" prefHeight="22.0" prefWidth="96.0" text="NAN">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="NANErabiltzailea" layoutX="338.0" layoutY="148.0" prefHeight="27.0" prefWidth="156.0" />
+            <Label layoutX="53.0" layoutY="305.0" prefHeight="18.0" prefWidth="115.0" text="Jaiotze data">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="305.0" layoutY="305.0" prefHeight="18.0" prefWidth="115.0" text="Alta data">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="jaiotzeDataErabiltzailea" layoutX="169.0" layoutY="302.0" prefHeight="26.0" prefWidth="115.0" />
+            <DatePicker fx:id="altaDataErabiltzailea" layoutX="379.0" layoutY="302.0" prefHeight="26.0" prefWidth="115.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
